@@ -1,0 +1,130 @@
+﻿.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+    .header .header-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+        .header .header-right .socials {
+            display: flex;
+            gap: 15px;
+            margin-right: 16px;
+        }
+
+            .header .header-right .socials .social {
+                text-decoration: none;
+                color: inherit;
+                transition: transform 0.2s ease-in-out;
+            }
+
+                .header .header-right .socials .social:hover {
+                    transform: scale(1.2);
+                }
+
+    .header .header-search {
+        position: relative;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+    }
+
+        .header .header-search input {
+            width: 300px;
+            max-width: 100%;
+            padding: 8px 36px 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 10rem;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .header .header-search .search-form {
+            display: flex;
+            align-items: center;
+            width: 300px; /* or some desired fixed width */
+            max-width: 100%;
+            position: relative; /* so dropdown can match width exactly */
+        }
+
+            .header .header-search .search-form input {
+                flex: 1; /* fill remaining space */
+                padding: 8px 12px;
+                border: 1px solid #ccc;
+                border-radius: 20px;
+                font-size: 14px;
+                box-sizing: border-box;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+
+                .header .header-search .search-form input:focus {
+                    border-color: #888;
+                }
+
+            /* The search button that has the icon */
+            .header .header-search .search-form .search-button {
+                background: none;
+                border: none;
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                color: #666;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+            }
+
+        /* The dropdown container */
+        .header .header-search .search-dropdown {
+            position: absolute;
+            top: 100%; /* directly below the input */
+            left: 0;
+            width: 100%; /* match the .search-form width */
+            max-height: 200px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 4px; /* small gap if you like, or 0 for no gap */
+        }
+
+
+            .header .header-search .search-dropdown .no-result {
+                color: #999;
+                font-style: italic;
+            }
+
+            .header .header-search .search-dropdown .search-item {
+                padding: 8px;
+                border-bottom: 1px solid #eee;
+            }
+
+                .header .header-search .search-dropdown .search-item:last-child {
+                    border-bottom: none;
+                }
+
+                .header .header-search .search-dropdown .search-item a {
+                    text-decoration: none;
+                    color: #333;
+                }
+
+                    .header .header-search .search-dropdown .search-item a:hover {
+                        text-decoration: underline;
+                    }
+
+@media (max-width: 600px) {
+    .header-search input {
+        width: 160px;
+    }
+}

@@ -1,0 +1,12 @@
+footer {
+    text-align: center;
+    background-color: black; /* 添加背景色便於觀察 */
+    display: flex;
+    flex-direction:column;
+}
+
+    footer .copyright{
+        background-color:rgb(16, 14, 14);
+        color:white;
+        padding:20px 0px;
+    }

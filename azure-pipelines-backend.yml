@@ -1,0 +1,76 @@
+#trigger:
+  #branches:
+    #include:
+      #- master
+  #paths:
+    #include:
+      #- Profolio.Server/**  # 只當後端 API 檔案變更時才觸發
+
+stages:
+ - stage: Build
+   jobs:
+     - job: Build
+       steps:
+        - task: DotNetCoreCLI@2
+          displayName: 'Restore NuGet Packages'
+          inputs:
+            command: 'restore'
+            projects: 'Profolio.Server/Profolio.Server.csproj'
+
+        - task: DotNetCoreCLI@2
+          displayName: 'Build .NET Core API'
+          inputs:
+            command: 'build'
+            projects: 'Profolio.Server/Profolio.Server.csproj'
+            arguments: '--configuration $(BuildConfiguration)'
+
+        #- task: DotNetCoreCLI@2
+        # displayName: 'Run Unit Tests'
+          #inputs:
+            #command: 'test'
+            #projects: 'Profolio.Server/**/*[Tt]ests/*.csproj'
+            #arguments: '--configuration $(BuildConfiguration) --collect:"Code Coverage"'
+    
+        - script: |
+            mkdir -p ~/.aspnet/https  # Create HTTPS folder
+          displayName: 'Fix HTTPS Developer Certificate'
+          condition: and(succeeded(), eq(variables['Agent.OS'], 'Linux'))
+
+
+        - task: DotNetCoreCLI@2
+          displayName: 'Publish .NET Core API'
+          inputs:
+            command: 'publish'
+            publishWebProjects: false
+            projects: 'Profolio.Server/Profolio.Server.csproj'
+            arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+            zipAfterPublish: true
+      
+        - task: PublishBuildArtifacts@1
+          displayName: 'Store Published Artifacts'
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+ - stage: Deploy
+   jobs:
+     - deployment: Deploy
+       environment: 'Production'
+       strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: DownloadBuildArtifacts@0
+                inputs:
+                  artifactName: 'drop'
+                  downloadPath: '$(Build.ArtifactStagingDirectory)'
+                displayName: 'Download drop Artifact'
+
+              - task: AzureWebApp@1
+                displayName: 'Deploy to Azure App Service'
+                inputs:
+                  azureSubscription: '$(azureSubscription)'
+                  appName: '$(appName)'
+                  appType: 'webApp'
+                  package: '$(Build.ArtifactStagingDirectory)'

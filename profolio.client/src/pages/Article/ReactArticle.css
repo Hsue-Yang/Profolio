@@ -1,0 +1,122 @@
+.article-page {
+    display: grid;
+    /* minmax(0, 250px) means the column can shrink down to 0 but max out at 250px */
+    grid-template-columns: 250px 1fr 250px;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+    .article-page .sidebar,
+    .article-page .toc {
+        padding-left: 20px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-page .sidebar {
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+    }
+
+    .article-page .content_section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .article-page .content_section .article {
+            padding: 0px 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: calc(100vw - 680px);
+        }
+
+            .article-page .content_section .article .article-title {
+                text-align: center;
+                font-size: 40px;
+            }
+
+            .article-page .content_section .article .article-content > * {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: break-spaces;
+            }
+
+            .article-page .content_section .article .article-content > img {
+                object-fit: contain;
+                aspect-ratio: auto;
+            }
+
+            .article-page .content_section .article .publish-time {
+                text-align: end;
+            }
+
+        .article-page .content_section .pagination {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px auto;
+        }
+
+            .article-page .content_section .pagination a {
+                border: 2px solid #ccc;
+                border-radius: 8px;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: inherit;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+                .article-page .content_section .pagination a:hover {
+                    transition: background-color 0.2s ease-in-out;
+                    background-color: lightgray;
+                }
+
+    .article-page .toc ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .article-page .toc .table_contents li {
+        padding: 5px 10px;
+    }
+
+    .article-page .toc ul li a {
+        text-decoration: none;
+        color: #1976d2;
+    }
+
+        .article-page .toc ul li a:hover {
+            text-decoration: underline;
+            color: inherit;
+        }
+
+/* 先隱藏右欄(toc)的斷點，例如寬度 <= 1200px 時 */
+@media (max-width: 1200px) {
+    .article-page {
+        /* 把原本三欄的結構改成兩欄 */
+        grid-template-columns: 250px 1fr;
+    }
+
+        .article-page .toc {
+            display: none;
+        }
+}
+
+/* 再進一步隱藏左欄(sidebar)的斷點，例如 <= 900px */
+@media (max-width: 900px) {
+    .article-section .article-page {
+        /* 最後只剩一欄 */
+        grid-template-columns: 1fr;
+    }
+
+        .article-section .article-page .sidebar {
+            display: none;
+        }
+}

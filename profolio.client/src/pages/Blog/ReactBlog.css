@@ -1,0 +1,87 @@
+.blog_container {
+    display: flex;
+    flex-direction: column;
+    align-content: baseline;
+    align-items: center;
+}
+
+.blog_title {
+    text-align: left; /* 讓內文靠左對齊 */
+    max-width: 800px;
+    width: 100%;
+}
+
+    .blog_title h1 {
+        color: inherit;
+    }
+
+    .blog_title p {
+        color: inherit;
+    }
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.blog-list .readMore {
+    text-decoration: none;
+    --tw-text-opacity: 1;
+    color: rgb(8 126 164 / var(--tw-text-opacity));
+}
+
+.blog-card {
+    border: 1px solid #d3d3e3; /* 淡灰藍色邊框，類似官方 */
+    border-radius: 10px; /* 圓角 */
+    padding: 16px;
+    box-shadow: inset 0 0 0 1px #d3d3e3, 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: inherit; /* 確保背景是白色 */
+    transition: box-shadow 0.3s ease-in-out;
+    margin: 10px 0px;
+    line-height: 1.625;
+    width: 100%;
+    max-width: 800px;
+    word-wrap: break-word; /* 避免長字串撐爆卡片 */
+    overflow-wrap: break-word;
+}
+
+    /* 滑鼠懸停效果 */
+    .blog-card:hover {
+        box-shadow: inset 0 0 0 1px #b3b3d3, 0 2px 5px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        background-color: rgba(120, 131, 155, .05);
+    }
+
+.blog-list .blog-card .title {
+    font-weight: 600;
+    font-size: 24px;
+    margin: 0px;
+}
+
+.blog-list .blog-card .date {
+    font-size: 15px;
+    --tw-text-opacity: 1;
+    color: rgb(94 104 126 / var(--tw-text-opacity));
+}
+
+.blog-list .blog-card .content {
+    font-size: 15px;
+    word-break: break-word; /* 讓長單詞斷行 */
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.load-more-btn {
+    background-color: #007acc;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .load-more-btn:hover {
+        background-color: #005f99;
+    }

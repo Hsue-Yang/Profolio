@@ -1,0 +1,81 @@
+#trigger:
+  #branches:
+    #include:
+      #- master
+  #paths:
+    #include:
+      #- profolio.client/**
+
+pool:
+  vmImage: 'ubuntu-latest'
+stages:
+ - stage:
+   jobs:
+     - job: Build
+       steps:
+        - task: NodeTool@0  #already have 18.20.7 version
+          displayName: 'Install Node.js'
+          inputs:
+            versionSpec: '20.x'
+
+        - script: |
+            mkdir -p ~/.aspnet/https  # Linux
+          displayName: 'Fix HTTPS Developer Certificate'
+          # mkdir -p $env:APPDATA\ASP.NET\https - for Windows
+
+        - script: |
+            cd profolio.client
+            echo "VITE_API_BASE_URL=$(VITE_API_BASE_URL)" > .env
+            npm install
+            npm install @mui/base
+            npm install @emotion/react @emotion/styled
+            npm run build
+          env:
+            VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+          displayName: 'Build Vite React App'
+          # @mui/base deprecated and @emotion/react is optional peer dependencies
+
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: 'profolio.client/dist'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          displayName: 'Copy Built Files to Staging Directory'
+          
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'dist'
+          displayName: 'Publish Build Artifacts'
+
+ - stage: Deploy
+   jobs:
+     - deployment: Deploy
+       environment: 'Production'
+       strategy:
+        runOnce:
+          deploy:
+            steps:
+               # Download to Pipeline.WorkSpace directory
+               # Pipeline.Workspace = /home/vsts/work/1
+              - task: DownloadBuildArtifacts@0
+                inputs:
+                  artifactName: 'dist'
+                  downloadPath: '$(Pipeline.Workspace)'
+                displayName: 'Download dist Artifact'
+
+               # AzureStaticWebApp@0 會找到 Source Directory = /home/vsts/work/1/s
+               # 移動 `dist` 到 `s` (Source Directory)
+              - script: |
+                  echo "===== Moving dist to Source Directory ====="
+                  mv $(Pipeline.Workspace)/dist $(Pipeline.Workspace)/s/dist
+                  echo "===== Checking dist Directory After Moving ====="
+                  ls -la $(Pipeline.Workspace)/s/dist || echo "dist not found"
+                displayName: 'Move dist to Source Directory'
+                
+              - task: AzureStaticWebApp@0
+                inputs:
+                  app_location: 'dist'  # Path where we find the source code
+                  skip_app_build: true # no need for npm build & install
+                  skip_api_build: true # without api
+                  output_location: '' # Path where the exit is located
+                  azure_static_web_apps_api_token: $(SWA_DEPLOYMENT_TOKEN) #部署權杖

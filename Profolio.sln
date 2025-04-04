@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profolio.Server", "Profolio.Server\Profolio.Server.csproj", "{C77F0BF4-FFD6-44C0-B72E-994B0F7A5E10}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "profolio.client", "profolio.client\profolio.client.esproj", "{305C09FD-29FE-4F0B-9E5C-79FEE1254062}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Profolio.SQL", "Profolio.SQL\Profolio.SQL.sqlproj", "{7060D3FA-3A40-4C6C-9085-455976292372}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C77F0BF4-FFD6-44C0-B72E-994B0F7A5E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77F0BF4-FFD6-44C0-B72E-994B0F7A5E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77F0BF4-FFD6-44C0-B72E-994B0F7A5E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77F0BF4-FFD6-44C0-B72E-994B0F7A5E10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305C09FD-29FE-4F0B-9E5C-79FEE1254062}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7060D3FA-3A40-4C6C-9085-455976292372}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F40DB0B2-B9AE-40E1-8F99-F59A6E6AAAB8}
+	EndGlobalSection
+EndGlobal

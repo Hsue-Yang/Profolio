@@ -1,0 +1,115 @@
+.Home_container {
+    width: 100%;
+}
+
+.subscribe_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    color: inherit;
+    flex-wrap: wrap;
+    gap: 200px;
+}
+
+.text-section {
+    max-width: 450px;
+    flex: 1;
+    text-align: left;
+}
+
+    .text-section h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .text-section p {
+        color: inherit;
+        font-size: 1rem;
+    }
+
+.subscribe_section .subscribe {
+    display: flex;
+    gap: 20px; /* 讓輸入框和按鈕之間的距離更合理 */
+    margin-top: 30px; /* 讓 Subscribe 跟上面的內文不會太近 */
+}
+
+.subscribe-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.subscribe-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .subscribe-btn:hover {
+        background-color: lightgreen;
+    }
+
+.subscribe_num {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.image-wrapper {
+    max-width: 300px;
+}
+
+    .image-wrapper img {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+
+.blog_section {
+    padding: 40px 10%;
+}
+
+.timeline_section {
+    padding: 40px 10%;
+    color:gray;
+}
+
+
+@media (max-width: 768px) {
+    .subscribe_section {
+        flex-direction: column; /* 讓內容垂直排列 */
+        align-items: center; /* 讓內容水平置中 */
+        text-align: center;
+        padding: 5% 8%; /* 調整 padding 讓內容不要太擠 */
+        gap: 20px;
+    }
+
+    .image-section {
+        order: -1; /* 把圖片區塊放到最上方 */
+    }
+
+    .image-wrapper {
+        max-width: 250px; /* 縮小圖片大小，確保不會太大 */
+    }
+
+    .text-section {
+        padding: 10px 0; /* 調整 padding 讓內文間距更舒適 */
+        max-width: 70%; /* 讓內容不會太窄 */
+    }
+
+    .subscribe-section {
+        flex-direction: column; /* 讓訂閱表單與按鈕變成垂直排列 */
+        gap: 10px;
+    }
+}

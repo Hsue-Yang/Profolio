@@ -1,0 +1,25 @@
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-item {
+    padding: 0.5rem 1rem;
+    margin: 0px 5px;
+    border-radius: 999rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .nav-item a {
+        color: inherit;
+    }
+
+    .nav-item:hover {
+        background-color: lightgray;
+    }
+
+    .nav-item.active {
+        background-color: rgb(230 247 255);
+        color: #087ea4;
+    }

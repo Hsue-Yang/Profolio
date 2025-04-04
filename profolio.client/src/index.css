@@ -1,0 +1,13 @@
+:root {
+    --footer-height: 30px;
+    --main-surface-tertiary: #cccccc; /* 滾動條前景色 */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

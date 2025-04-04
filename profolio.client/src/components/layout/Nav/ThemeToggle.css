@@ -1,0 +1,64 @@
+﻿.theme-toggle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem; /* 按钮宽度 */
+    height: 2rem; /* 按钮高度 */
+    border: 1px solid gray;
+    border-radius: 999rem;
+    padding: 0;
+    background-color: var(--gray-999); /* 默认按钮背景 */
+    box-shadow: inset 0 0 0 1px var(--accent-overlay); /* 内部边界线 */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* 确保子元素不会超出按钮区域 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: inherit;
+}
+
+.toggle-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 图标分布在两端 */
+    width: 100%; /* 滑块宽度 */
+    height: 100%; /* 滑块高度 */
+    position: absolute; /* 相对父容器定位 */
+    padding: 0 0.5rem; /* 内边距确保图标不会紧贴边界 */
+}
+
+/* 图标通用样式 */
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* 图标大小 */
+    color: inherit; /* 默认图标颜色 */
+    width: 1.6rem; /* 图标容器大小 */
+    height: 1.6rem;
+    z-index: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle-button.light .light-icon {
+    transform: scale(1);
+}
+.theme-toggle-button.dark .light-icon {
+    transform: scale(0.7);
+}
+.theme-toggle-button.light .dark-icon {
+    transform: scale(0.7);
+}
+.theme-toggle-button.dark .dark-icon {
+    transform: scale(1);
+}
+
+/* Background Theme Colors */
+html.theme-dark {
+    background-color: #121212; /* 深色背景 */
+    color: #ffffff; /* 深色文字 */
+}
+
+html:not(.theme-dark) {
+    background-color: #ffffff; /* 淺色背景 */
+    color: #000000; /* 淺色文字 */
+}

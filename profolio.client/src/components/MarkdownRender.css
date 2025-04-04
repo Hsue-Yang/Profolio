@@ -1,0 +1,45 @@
+.alert-box {
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 8px; /* Rounded corners */
+    font-size: 1em;
+    line-height: 1.5;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Specific styles for each type */
+.info {
+    background: rgba(0, 0, 255, 0.1);
+    border-left: 5px solid #007bff;
+}
+
+.success {
+    background: rgba(40, 167, 69, 0.1);
+    border-left: 5px solid #28a745;
+}
+
+.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 5px solid #ffc107;
+}
+
+.danger {
+    background: rgba(220, 53, 69, 0.1);
+    border-left: 5px solid #dc3545;
+}
+
+/* Optional: adding a decorative icon via pseudo-element */
+.alert-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-image: url('/path/to/your/pattern.png'); /* Optional background pattern */
+    background-repeat: repeat;
+    pointer-events: none;
+}

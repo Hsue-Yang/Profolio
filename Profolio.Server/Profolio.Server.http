@@ -1,0 +1,40 @@
+@Profolio.Server_HostAddress = http://localhost:5289/api
+
+###
+# Article
+# 手動同步文章列表（後台或排程用）
+POST {{Profolio.Server_HostAddress}}/Article/Sync
+Accept: application/json
+
+###
+# 獲取單篇文章（Markdown 資料）
+@title = hww
+GET {{Profolio.Server_HostAddress}}/Article/{{title}}
+Accept: application/json
+
+###
+# 獲取主頁文章卡片
+GET {{Profolio.Server_HostAddress}}/Article/Cards
+Accept: application/json
+
+###
+# 獲取sub-title (sidebar)
+GET {{Profolio.Server_HostAddress}}/Article/SubTitle
+Accept: application/json
+
+###
+# Profile
+# 獲取個人頁面的技能樹和時光背景資訊
+GET {{Profolio.Server_HostAddress}}/Profile/Overview
+Accept: application/json
+
+###
+# 新增或更新時光背景
+POST {{Profolio.Server_HostAddress}}/Profile/Timeline
+Content-Type: application/json
+{
+  "title": "A New Timeline Title",
+  "imageUrl": "https://example.com/image.jpg",
+  "timePoint": "2025-01-23T12:00:00",
+  "description": "This is the description of the timeline"
+}
